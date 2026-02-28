@@ -83,3 +83,12 @@ a {
 .space {
 	margin-right: 150px;
 }
+
+.say b {
+    font-weight: 900;
+    font-size: 1.2em;
+    color: #cc0044;
+    text-shadow:
+        0 0 10px rgba(220, 0, 80, 0.6),
+        0 0 20px rgba(180, 0, 60, 0.4);
+}
