@@ -58,7 +58,7 @@
         <div id="wrap">
             <div id="text">
                 <div id="code">
-                <big> <big><big><big>  <big> <big> <span class="say">must love you 💝</span><br><br></big></big></big></big></big></big>
+                <big> <big><big><big>  <big> <span class="say">must love you 💝</span><br><br></big></big></big></big></big>
               <big>      <big> <big><span class="say">I know you are a naive, kind, and gentle girl</span><br></big></big></big> 
                  <big> <big>  <big><span class="say">I really hope I can match you</span><br></big></big></big>
                    <big> <big><big> <span class="say">If you could give me a chance to love you well</span><br></big></big></big>
@@ -85,7 +85,7 @@
 
     </div>
 
-    <audio preload="auto" autoplay="" id="media" src="love.mp3" autoplay preload loop="loop"></audio>
+    <audio preload="auto" id="media" src="love.mp3" loop="loop"></audio>
 
     <script>
         (function () {
@@ -132,7 +132,7 @@
                     height: 650,
                 },
                 footer: {
-                    width: 200,
+                    width: 500,
                     height: 5,
                     speed: 10,
                 }
@@ -149,6 +149,9 @@
                 y = e.pageY - offset.top;
                 if (seed.hover(x, y)) {
                     hold = 0;
+                    // Music + Animation ekসাথে start
+                    var music = document.getElementById('media');
+                    music.play().catch(function(err) { console.log('Music error:', err); });
                     canvas.unbind("click");
                     canvas.unbind("mousemove");
                     canvas.removeClass('hand');
