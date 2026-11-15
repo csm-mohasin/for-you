@@ -10,8 +10,8 @@
         #code .say {
             font-family: 'Quicksand', sans-serif !important;
             font-weight: 600;
-            font-size: 1.0em;
-            letter-spacing: 0.05em;
+            font-size: 1em;
+            letter-spacing: 0.03em;
             color: #8b0045;
             text-shadow:
                 0 0 8px rgba(180, 0, 80, 0.4),
@@ -47,35 +47,48 @@
     <script type="text/javascript" src="./Love_files/functions.js" charset="utf-8"></script>
     <script type="text/javascript" src="./Love_files/love.js" charset="utf-8"></script>
 
-</head>
+<script>
+        // Always fit the whole 1100x680 stage inside the visible screen
+        (function () {
+            function fit() {
+                var s = Math.min(window.innerWidth / 1100, window.innerHeight / 690, 1.25);
+                window.__scale = s;
+                var w = document.getElementById('wrap');
+                if (w) w.style.transform = 'scale(' + s + ')';
+            }
+            window.__fit = fit;
+            fit();
+            document.addEventListener('DOMContentLoaded', fit);
+            window.addEventListener('load', fit);
+            window.addEventListener('resize', fit);
+        })();
+    </script>
+    </head>
 
 <body>
 
-    <div id="main"><a href="#" target="_blank">
+    <div id="main">
         <div id="error">Dear customer, your browser does not support the content that is about to be displayed. Please switch to Google Chrome.<a
                 href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a> or Firefox <a
                 href="http://firefox.com.cn/download/">Firefox</a>Browser~</div>
         <div id="wrap">
             <div id="text">
                 <div id="code">
-                <big> <big><big><big>  <big> <span class="say">must love you 💝</span><br><br></big></big></big></big></big>
-              <big>      <big> <big><span class="say">I know you are a naive, kind, and gentle girl</span><br></big></big></big> 
-                 <big> <big>  <big><span class="say">I really hope I can match you</span><br></big></big></big>
-                   <big> <big><big> <span class="say">If you could give me a chance to <b>love</b> you well</span><br></big></big></big>
-                   <big> <big><big> <span class="say">I just want to be sincere with you</span><br></big></big></big>
-                    <br>
-                   <big> <big><big> <span class="say">I <b>love</b> you so much that flowers bloom and birds sing</span><br></big></big></big>
-                   <big> <big><big> <span class="say"><b>Love</b> to the point where Niulang and Zhinü nod for us</span><br></big></big></big>
-                   <big> <big><big> <span class="say"><b>Love</b> to the point where flowers bloom and birds gather around us</span><br></big></big></big>
-                  <big> <big><big>  <span class="say"><b>Love</b> to the point where every rainbow reflects your beauty</span><br></big></big></big>
-                    <br>
-                  <big> <big><big>  <span class="say">I will <b>love</b> you until the seas dry up and the rocks crumble, and I will never regret it.</span><br></big></big></big>
-                  <big> <big><big>  <span class="say">I will say I have no regrets even in the next life.</span><br></big></big></big>
-                    <big> <big><big><span class="say">I'll sing this beautiful song to the girl I <b>love</b>.</span><br></big></big></big>
-                   <big> <big><big> <span class="say">I really hope you can give me a chance.</span><br></big></big></big>
-                   <big> <big><big> <span class="say">let me <b>love</b> you</span><br>
-                    <br></big></big></big>
-                    </big></big><span class="say"><span class="space"></span><big> <big><big><b>-- Your, CSM. </b></span></big></big></big></big></big>
+                    <div class="title"><span class="say">must love you 💝</span></div>
+                    <p><span class="say">I know you are a naive, kind, and gentle girl</span><br>
+                    <span class="say">I really hope I can match you</span><br>
+                    <span class="say">If you could give me a chance to <b>love</b> you well</span><br>
+                    <span class="say">I just want to be sincere with you</span></p>
+                    <p><span class="say">I <b>love</b> you so much that flowers bloom and birds sing</span><br>
+                    <span class="say"><b>Love</b> to the point where Niulang and Zhinü nod for us</span><br>
+                    <span class="say"><b>Love</b> to the point where flowers bloom and birds gather around us</span><br>
+                    <span class="say"><b>Love</b> to the point where every rainbow reflects your beauty</span></p>
+                    <p><span class="say">I will <b>love</b> you until the seas dry up and the rocks crumble, and I will never regret it.</span><br>
+                    <span class="say">I will say I have no regrets even in the next life.</span><br>
+                    <span class="say">I'll sing this beautiful song to the girl I <b>love</b>.</span><br>
+                    <span class="say">I really hope you can give me a chance.</span><br>
+                    <span class="say">let me <b>love</b> you</span></p>
+                    <div class="sign"><span class="say"><b>-- Your, CSM.</b></span></div>
                 </div>
             </div>
 
@@ -145,8 +158,8 @@
 
             canvas.click(function (e) {
                 var offset = canvas.offset(), x, y;
-                x = e.pageX - offset.left;
-                y = e.pageY - offset.top;
+                x = (e.pageX - offset.left) / (window.__scale || 1);
+                y = (e.pageY - offset.top) / (window.__scale || 1);
                 if (seed.hover(x, y)) {
                     hold = 0;
                     // Music + Animation ekসাথে start
@@ -158,8 +171,8 @@
                 }
             }).mousemove(function (e) {
                 var offset = canvas.offset(), x, y;
-                x = e.pageX - offset.left;
-                y = e.pageY - offset.top;
+                x = (e.pageX - offset.left) / (window.__scale || 1);
+                y = (e.pageY - offset.top) / (window.__scale || 1);
                 canvas.toggleClass('hand', seed.hover(x, y));
             });
 
